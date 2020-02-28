@@ -5,6 +5,7 @@ The best way so far seems to be using Javascript-highlighting but I became dissa
 So I decided to define a new highlighting using the User-Defined-Language tool of Notepad++.  
 There's another project from [meatballcoder](https://github.com/meatballcoder/notepadplusplus-vue-syntax-highlighting) also defining a UDL for .vue files but unfortunately it appears to be broken.
 Thus I created another UDL realising Vue single-file component highlighting in an acceptable manner based on the themes Notepad++ uses for Javascript and HTML.
+It also supports BootstrapVue.
 
 ## Installation
 1. Copy the content of *Vue.xml* into a new file and save it as *Vue.xml* (or any other name if you want Notepad++ to display its name otherwise, e.g. *vue.xml* to start with a small letter)(git users may clone).
@@ -19,3 +20,5 @@ If you want to customize the highlighting you can do so by following *Language -
 Colors and font (sizes) are quite simple to change but you might want to read further below if you want to make major changes.
 
 ## How it's (not) working
+A typical single-file component consists of three parts: *template*, *script* and *style*.
+Basically all one has to do is to apply the consisting rules for *HTML*, *Javascript* and *CSS* to the correct part of the code and add the keywords for Vue.
