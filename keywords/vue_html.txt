@@ -1,0 +1,1 @@
+v-text v-html v-show v-if v-else v-else-if v-for v-on v-bind v-model v-slot v-pre v-cloak v-once key ref is slot slot-scope scope component transition transition-group keep-alive slot
