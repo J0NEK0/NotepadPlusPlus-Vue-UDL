@@ -1,6 +1,6 @@
 <template v-if="loginType === 'username'">
 	<h1>Heading</h1>
-	<label>Username</label>
+	<label>Username</label>		<!-- Comment in HTML -->
 	<input placeholder="Enter your username" key="username-input">
 </template>
 <template v-else>
