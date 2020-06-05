@@ -40,7 +40,7 @@ The UDL of Notepad++ allows to define eight sets of keywords and each set has it
 | 1 | template | BootstrapVue keywords, bold and lavender-colored |
 | 2 | template | Vue directives and special attributes, bold and green |
 | 3 | template | HTML keywords and attributes, bold and blue |
-| 4 | script   | Vue keywords, bolad and green |
+| 4 | script   | Vue keywords, bold and green |
 | 5 | script   | Javascript ternary keywords, bold and brown |
 | 6 | script   | Javascript primary keywords mixed with secondary keywords, bold and blue |
 | 7 | style    | CSS primary and secondary keywords, bold and lavender-colored |
