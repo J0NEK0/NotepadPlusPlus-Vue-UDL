@@ -14,6 +14,10 @@
 			</b-col>
 		</b-row>
 	</b-container>
+	<div id="mydiv" class="myclass">
+		<p style="font-size: 10px" data-custom="1234">Text</p>
+		<a href="http://localhost:8080/url?query">#Linked  {{my-var}} !</a>
+	</div>
 </template>
 
 <script>
