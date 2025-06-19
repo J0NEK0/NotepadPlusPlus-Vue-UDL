@@ -18,7 +18,7 @@ Notepad++ should automatically select the language for every *.vue* file opened 
 Colors and font (sizes) are quite simple to change but you might want to read further below before making other changes.
 
 > [!TIP]
-> When changing style settings, don't select anything for *font* and *size* and keep the background transparent. That way, [issues](#3) can be avoided when using a different theme.
+> When changing style settings, don't select anything for *font* and *size* and keep the background transparent. That way, [issues](https://github.com/J0NEK0/NotepadPlusPlus-Vue-UDL/issues/3) can be avoided when using a different theme.
 
 ## Styles
 Overview over the styles used in this UDL:
@@ -88,11 +88,11 @@ The first kind (Operators 1) can be glued to any variable or keyword, e.g. `+=` 
 > Observation: Operators appear to be processed after delimiters. When a token (e. g. `#`) is defined as operator but also used as (part of) an openening / closing token of a delimiter as well, the styling of the delimiter is applied.  
 
 The operator may still appear (styled as such) in or outside of the delimiter range, depending on the exact definition of the opening / closing of the delimiter and whether nesting has been activated.
-This behaviour actually makes it possible to improve the HTML highlighting using an additional layer of nesting.
+This behavior actually makes it possible to improve the HTML highlighting using an additional layer of nesting.
 
-When defining the first kind of operators (Operators 1) it is important to know that the order of the individual operators matters.
+When defining the first kind of operators (Operators 1) it is important to know that the order of the individual operators matters.  
 ![Order of operators](img/operator_ordering.png)  
-Operators are marked as red in the image above.
+Operators are marked red in the image above.
 On the left side, Operators 1 was defined as `+ +=` and on the right side vice versa, i. e. `+= +`.
 The difference can be observed in line 4 and 5: the operator defined first is matched.  
 Similarly, the order of delimiters is also important for the highlighting behavior.
@@ -177,12 +177,12 @@ Operators of the first kind are usually special characters:
 
 Operators of the first kind are limited to one set Operators 1.
 This restriction poses a problem: 
-While there is overlap between the operators of JS, CSS and HTML, not everything is compatible which results in semantically incorrect highlighting in some cases.  
+While there is overlap between the operators of JS, CSS and HTML, not everything is compatible, which results in semantically incorrect highlighting in some cases.  
 Especially `-` causes problems:
-If `-` is defined in Operators 1 as it should be from a JavaScript perspective, almost all Vue directives won't be identifed anymore, since they contain a `-` and thus count as two words (e. g. `v-if` becomes `v`and `if`) instead of one keyword.
+If `-` is defined in Operators 1, as it should be from a JavaScript perspective, almost all Vue directives won't be identifed anymore, since they contain a `-` and thus count as two words instead (e. g. `v-if` becomes `v`and `if`).
 Not enabling (nesting) Operators 1 in the *template*-part would be possible thanks to the string delimiter but has some drawbacks (`=` might be part of every keyword and Vue-modifiers need special treatment).
-The same doesn't apply to CSS, where an abundance of keywords contains `-`.
-Not enabling Operators on inside the *style*-part isn't really an option because any meaningful highlighting becomes essentially impossible.
+The same cannot be applied to CSS, where an abundance of keywords contain `-`.
+Not enabling Operators 1 inside the *style*-part isn't really an option, because any meaningful highlighting becomes essentially impossible (or at least dependent on the coding style/space usage).
 
 Leaving out strings, Operators 1 is thus defined as
 ```
@@ -202,7 +202,7 @@ and Operators 2 as
 ## Keywords
 
 Up to eight sets of keywords can be defined, each with their own styling setting.
-Attention should be paid to the order of keyword definitons.
+Attention should be paid to the order of keyword definitions.
 When a keyword is defined in multiple sets, i. e. the sets aren't disjoint, its highlighting will be determined by the first set of keywords defining that keyword.  
 Example: The keyword `for` is defined in Keywords 1 (JS core, `for`-loop) and Keywords 3 (JS properties, `Symbol.for()`) and will therefore be highlighted according to style defined for Keywords 1, i. e. as a JS core keyword.
 
@@ -308,7 +308,7 @@ Additionally the styles `DEFAULT`, `TAG`, `CLASS`, `UNKNOWN PSEUDOCLASS`, `OPERA
 Some of the underlying keywords will have to be merged, as the number of available keyword sets is limited.
 In fact, CSS could be considered the looser when compared to JS and HTML, as there is only one set of keywords distinctly allocated for CSS: Keywords 6.
 Given the nature of CSS, this should still result in reasonable highlighting.
-Nesting of HTML tags and attributes further enhance this.
+Nesting of HTML tags and attributes further enhances this but can be disabled if not desired.
 
 <details>
 
@@ -325,7 +325,7 @@ Keywords 6th group contains CSS properties, pseudo-classes, pseudo-elements, val
 
 ---
 ### JavaScript
-Three sets of keywords are defined for Native CSS in Notepad++:
+Three sets of keywords are defined for native JavaScript in Notepad++:
 | Keyword | Style |
 |:--------|:------|
 |`instre1`|`INSTRUCTION WORD`|
@@ -378,7 +378,7 @@ Of course, "correctly" highlighting only the first `join` is outside of the scop
 It is technically even outside the scope of JavaScript and something that TypeScript tackles.
 Nevertheless, the probability of such "wrong" highlightings increases with the number of keywords.
 To avoid this, Keywords 3 should be kept to a minimum or, as a matter of preference, not be used at all.  
-Regardless, this UDL includes all built-in objects as well as all their properies and methods (excluding experimental, non-standard and deprecated ones) and additionally a few choice objects from some WebAPIs (mainly DOM API).
+Regardless, this UDL includes all built-in objects as well as all their properties and methods (excluding experimental, non-standard and deprecated ones) and additionally a few choice objects from some WebAPIs (mainly DOM API).
 The final definitions can be found below:
 <details>
 
@@ -402,7 +402,7 @@ For the JavaScript-part two kinds of API-styles are distinguished: Options-API a
 This UDL includes both styles by default.
 
 To emphasize components belonging to Vue, two distinct keyword sets - Keywords 7 and keywords 8 - have been allocated in this UDL: one for HTML (tags and attributes) and one for JavaScript keywords.
-If a distinct highlighting isn't important to you, you can merge the respective subsets, which can be found in [/ressources](/resources/README.md), into their HTML and JS counterparts and thus free two sets of keywords.
+If a distinct highlighting isn't important to you, you can merge the respective subsets, which can be found in [/resources](/resources/README.md), into their HTML and JS counterparts and thus free two sets of keywords.
 
 <details>
 
@@ -460,12 +460,12 @@ An idea for a possible change would be to do the same for CSS comments, e. g. by
 A common functionality of editors is the ability to fold blocks of code at certain points, e.g. `{`and `}`.
 In UDL this is another global characteristic and unfortunately it's not applicable to the delimiter-environments.
 However, to not completely deny this feature, such breakpoints can be defined in comments.
-To create a folding block is write `{`, `.fS` or `.foldStart` to mark the start and `}`, `.fE` or `.foldEnd` to mark the end of the block inside a comment. Use `}{`, `.fM` or `.foldMid` to further divide the block, e. g. similar to *if* - **else** - *endif*.
+To create a folding block, write `{`, `.fS` or `.foldStart` to mark the start and `}`, `.fE` or `.foldEnd` to mark the end of the block inside a comment. Use `}{`, `.fM` or `.foldMid` to further divide the block, e. g. similar to *if* - **else** - *endif*.
 
 ![Comment-Folding](img/folding.png)
 
 # Conclusion / Versions
-Feel free to let me know if there have been changes, something is missing or possible additions.
+Feel free to let me know if there have been changes, something is missing or about possible additions.
 
 Used in this project
 - UDL 2.1
@@ -499,5 +499,5 @@ The initial version of this project also had some support for BootstrapVue, but 
 - this setup was very specific (to my needs at that time) but doesn't generalize well, since there are plenty of other frameworks.
 
 Customization for specific frameworks is possible, though a developer might use different frameworks in different projects, so the UDL would become project-specific.
-In fact, even the inclusion/exclusion of the Vue Options-/Componsition-API is somethig that might differ from project to project.
+In fact, even the inclusion/exclusion of the Vue Options-/Composition-API is something that might differ from project to project.
 One suggestions to include further frameworks, as mentioned along the [Vue keywords](#vue), is to merge the framework-specific keywords with the respective keyword-set of the already defined sets JS, HTML and CSS.
