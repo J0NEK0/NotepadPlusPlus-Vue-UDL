@@ -66,7 +66,7 @@
 	const greeting = ref('Hello World!')
 	
 	const firstLetterUp = computed({
-		get: () => keywords.split(" ").map(x => x[0] + x.slice(1)).join(" "),
+		get: () => keywords.value = keywords.split(" ").map(x => x[0].toUpperCase() + x.slice(1)).join(" "),
 		set: (keywords) => {
 			keywords.value = keywords
 		}
